@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 1px solid #370419;
+        }
+
+        .logo-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .intro-text {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background-color: rgba(55, 4, 25, 0.2);
+            border-radius: 8px;
+            border-left: 4px solid #370419;
+        }
+
+        .intro-text h2 {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .intro-text p {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product {
+            background-color: #000;
+            border: 1px solid #370419;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(55, 4, 25, 0.5);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-color: #370419;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-name {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        /* Модальное окно для просмотра изображения */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border: 2px solid #370419;
+            border-radius: 4px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #370419;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .catalog {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .catalog {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+           <img src="img/logo.png" alt="Логотип Catalogue">
+        </div>
+        <div class="logo-text">Catalogue</div>
+    </header>
+
+    <section class="intro-text">
+        <h2>Добро пожаловать в каталог коллекции звероботов (бистов) Sacrarium Beasts!</h2>
+        <p>Здесь представлены все звероботы, какие у нас есть на текущий момент. Верхний ряд-это самые последние поступления.</p>
+        <p>Частично - это ремейки старых звероботов из Battle Beasts и Laser Beasts от Takara\Hasbro, частично - оригинальные авторские экземпляры в традиционной стилистике.</p>
+		<p> Бисты созданы с использованием высокополигонального 3D скульптинга, печатаются из твердой и прочной инженерной смолы премиального качества, на современном принтере с разрешением 10К.</p>
+		<p> Крепления рук самые простые: штифт в плечах рук и сквозные пазы в торсах звероботов. Высота каждой фигурки традиционная: 5см, для некоторых зверей вроде Жирафа- 5.6 см. </p>
+		<p> Звери из Sacrarium Beasts задуманы таким образом, чтобы интегрироваться в коллекцию из обычных, стоковых и старых звероботов, не выделяясь своими габаритами. </p>
+		<p> Клик по фото для просмотра. </p>
+    </section>
+
+    <main class="catalog">
+        <!-- Товар 1 -->
+        <div class="product" onclick="openModal('img/gator.jpg')">
+            <div class="product-image">
+                <img src="img/gator.jpg" alt="Predator Gator">
+            </div>
+            <div class="product-name">Predator Gator <br> Аллигатор</div>
+        </div>
+		<!-- Товар 1 -->
+        <div class="product" onclick="openModal('img/camel.jpg')">
+            <div class="product-image">
+                <img src="img/camel.jpg" alt="Smoking Camel">
+            </div>
+            <div class="product-name">Smoking Camel <br> Верблюд</div>
+        </div>
+		<!-- Товар 1 -->
+        <div class="product" onclick="openModal('img/Bighorn.jpg')">
+            <div class="product-image">
+                <img src="img/Bighorn.jpg" alt="Bighorn">
+            </div>
+            <div class="product-name">Classic Bighorn <br> Баран</div>
+        </div>
+		<!-- Товар 1 -->
+        <div class="product" onclick="openModal('img/Cobra.jpg')">
+            <div class="product-image">
+                <img src="img/Cobra.jpg" alt="Cobra">
+            </div>
+            <div class="product-name">Classic Cobra <br> Кобра</div>
+        </div>
+		<!-- Товар 1 -->
+        <div class="product" onclick="openModal('img/Elephant.jpg')">
+            <div class="product-image">
+                <img src="img/Elephant.jpg" alt="Elephant">
+            </div>
+            <div class="product-name">Classic Elephant <br> Слон</div>
+        </div>
+		<!-- Товар 1 -->
+        <div class="product" onclick="openModal('img/Boar.jpg')">
+            <div class="product-image">
+                <img src="img/Boar.jpg" alt="Boar">
+            </div>
+            <div class="product-name">Classic Boar <br> Бородавочник</div>
+        </div>
+		<!-- Товар 1 -->
+        <div class="product" onclick="openModal('img/Elker.jpg')">
+            <div class="product-image">
+                <img src="img/Elker.jpg" alt="Elker">
+            </div>
+            <div class="product-name">Classic Elker <br> Лось</div>
+        </div>
+		<!-- Товар 1 -->
+        <div class="product" onclick="openModal('img/Giraffe.jpg')">
+            <div class="product-image">
+                <img src="img/Giraffe.jpg" alt="Giraffe">
+            </div>
+            <div class="product-name">Classic Giraffe <br> Жираф</div>
+        </div>
+		<!-- Товар 1 -->
+        <div class="product" onclick="openModal('img/Fly-sharker.jpg')">
+            <div class="product-image">
+                <img src="img/Fly-sharker.jpg" alt="Fly-sharker">
+            </div>
+            <div class="product-name">Classic Fly-sharker <br> Летучая рыба</div>
+        </div>
+		<!-- Товар 1 -->
+        <div class="product" onclick="openModal('img/Sharker.jpg')">
+            <div class="product-image">
+                <img src="img/Sharker.jpg" alt="Sharker">
+            </div>
+            <div class="product-name">Classic Sharker <br> Акула</div>
+        </div>
+		<div class="product" onclick="openModal('img/Rayfer.jpg')">
+            <div class="product-image">
+                <img src="img/Rayfer.jpg" alt="Rayfer">
+            </div>
+            <div class="product-name">Classic Rayfer <br> Скат</div>
+        </div>
+		<div class="product" onclick="openModal('img/Piercer.jpg')">
+            <div class="product-image">
+                <img src="img/Piercer.jpg" alt="Spark Shark">
+            </div>
+            <div class="product-name">Classic Spark Shark <br> Рыба-меч</div>
+        </div>
+		<div class="product" onclick="openModal('img/Jester.png')">
+            <div class="product-image">
+                <img src="img/Jester.png" alt="Jester">
+            </div>
+            <div class="product-name">Jester Yorick <br> Шут</div>
+        </div>
+		<div class="product" onclick="openModal('img/Pope.png')">
+            <div class="product-image">
+                <img src="img/Pope.png" alt="Pope">
+            </div>
+            <div class="product-name">Pope Baltazar <br> Священник</div>
+        </div>
+		<div class="product" onclick="openModal('img/King.png')">
+            <div class="product-image">
+                <img src="img/King.png" alt="King">
+            </div>
+            <div class="product-name">King Grimlock <br> Король</div>
+        </div>
+		<div class="product" onclick="openModal('img/Queen.png')">
+            <div class="product-image">
+                <img src="img/Queen.png" alt="Queen">
+            </div>
+            <div class="product-name">Queen Eleanore <br> Королева</div>
+        </div>
+
+
+
+
+        
+    </main>
+
+    <!-- Модальное окно для просмотра изображения -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Функция для открытия модального окна с изображением
+        function openModal(imageUrl) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            
+            modalImg.src = imageUrl;
+            modal.style.display = 'flex';
+        }
+
+        // Функция для закрытия модального окна
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Закрытие модального окна при клике вне изображения
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
